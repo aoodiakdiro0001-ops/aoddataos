@@ -1,0 +1,7 @@
+﻿key,label_ar,label_en,step,def
+storage_gb,التخزين بالغيغابايت,Storage (GB),100,500
+storage_cost_gb,سعر غيغابايت شهرياً,$/GB per month,0.005,0.02
+scans_tb,المسح شهرياً بالتيرابايت,Scans monthly (TB),1,2
+scan_cost_tb,سعر تيرابايت مسح,$/TB scanned,0.5,5
+bi_seats,مستخدمو اللوحة,BI seats,1,10
+seat_cost,سعر المقعد شهرياً,$/seat per month,1,14

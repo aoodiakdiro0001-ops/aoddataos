@@ -1,0 +1,16 @@
+{
+ "key": "budget", "type": "calc", "icon": "🧮", "color": "#2ad3a7",
+ "label_ar": "حاسبة تكلفة البيانات", "label_en": "Data Cost Calculator",
+ "note": "تقدير ترتيبي لا رقم تعاقد: استبدل الأسعار بوثيقة مزوّدك الحالي، وأضف هامشاً على الموارد المتقلبة.",
+ "fields": [
+  {"key": "storage_gb", "label_ar": "التخزين بالغيغابايت", "label_en": "Storage (GB)", "step": 100, "def": 500},
+  {"key": "storage_cost_gb", "label_ar": "سعر غيغابايت شهرياً", "label_en": "$/GB per month", "step": 0.005, "def": 0.02},
+  {"key": "scans_tb", "label_ar": "المسح شهرياً بالتيرابايت", "label_en": "Scans monthly (TB)", "step": 1, "def": 2},
+  {"key": "scan_cost_tb", "label_ar": "سعر تيرابايت مسح", "label_en": "$/TB scanned", "step": 0.5, "def": 5},
+  {"key": "bi_seats", "label_ar": "مستخدمو اللوحة", "label_en": "BI seats", "step": 1, "def": 10},
+  {"key": "seat_cost", "label_ar": "سعر المقعد شهرياً", "label_en": "$/seat per month", "step": 1, "def": 14}
+ ],
+ "formula_js": "(v) => { var st = v.storage_gb * v.storage_cost_gb; var sc = v.scans_tb * v.scan_cost_tb; var bi = v.bi_seats * v.seat_cost; var m = st + sc + bi; return '<b>' + m.toFixed(2) + '</b> دولار شهرياً — وحوالي <b>' + (m*12).toFixed(0) + '</b> دولار سنوياً. أكبر بند: <b>' + (Math.max(st, sc, bi) / Math.max(m, 0.01) * 100).toFixed(0) + '</b> بالمئة من الكلفة (' + (Math.max(st, sc, bi) === st ? 'التخزين' : (Math.max(st, sc, bi) === sc ? 'المسح' : 'المقاعد')) + ').'; }",
+ "formulaNote2Title": "تفصيل الصيغة",
+ "formulaNote": "التخزين = غيغابايت × سعر الغيغابايت. المسح = تيرابايت × سعر التيرابايت. المقاعد = العدد × السعر. الشهري = المجموع، والسنوي × 12. راقب البند الأكبر: إن تجاوز المقاعد نصف الكلفة فراجع التراخيص، وإن تجاوز المسح فراجع التقسيم والتجميع المسبق."
+}
